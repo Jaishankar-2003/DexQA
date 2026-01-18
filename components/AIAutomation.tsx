@@ -1,107 +1,137 @@
+// 
+
+//=====================================================================================================
+
+
+"use client";
+
+import { motion } from "framer-motion";
+import { 
+  Cpu, Sparkles, Zap, 
+  Database, RefreshCw, BarChart3, 
+  ArrowUpRight, Bot 
+} from "lucide-react";
+import { cn } from "../app/lib/utils";
+
 const capabilities = [
   {
-    title: "AI-Assisted Test Case Generation",
-    description:
-      "Leverage AI to generate comprehensive test cases from requirements, user stories, and code analysis, reducing manual effort while maintaining coverage.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
+    title: "AI-Assisted Generation",
+    description: "Our LLM-driven engine transforms user stories into executable Playwright/Cypress scripts instantly.",
+    icon: <Sparkles className="w-6 h-6" />,
+    stats: "85% Faster Setup",
+    color: "bg-blue-600",
+    size: "lg" // Larger card for hero capability
   },
   {
-    title: "Smart Regression Selection",
-    description:
-      "Intelligent test selection algorithms identify which tests to run based on code changes, reducing execution time while maintaining confidence.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
+    title: "Smart Regression",
+    description: "ML-based selection runs only the tests affected by code changes, saving hours of compute time.",
+    icon: <Zap className="w-6 h-6" />,
+    stats: "70% Less Execution",
+    color: "bg-emerald-500",
+    size: "sm"
   },
   {
-    title: "Test Data Generation",
-    description:
-      "Automated generation of realistic test data sets, including edge cases and boundary conditions, to improve test coverage and reduce setup time.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      </svg>
-    ),
+    title: "Synthetic Data",
+    description: "Automated generation of realistic, PII-compliant data sets for boundary and edge-case testing.",
+    icon: <Database className="w-6 h-6" />,
+    stats: "Zero PII Risk",
+    color: "bg-indigo-600",
+    size: "sm"
   },
   {
-    title: "Flaky Test Detection",
-    description:
-      "Machine learning models identify and flag flaky tests, helping teams prioritize fixes and maintain test suite reliability.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-      </svg>
-    ),
+    title: "Flaky Test Healing",
+    description: "Self-healing algorithms identify DOM changes and suggest locator updates before tests fail.",
+    icon: <RefreshCw className="w-6 h-6" />,
+    stats: "99.9% Stability",
+    color: "bg-rose-500",
+    size: "sm"
   },
   {
-    title: "CI/CD Integration",
-    description:
-      "Seamless integration with CI/CD pipelines, enabling automated test execution, reporting, and quality gates in your deployment workflow.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-  },
-  {
-    title: "Automation ROI Optimization",
-    description:
-      "Data-driven analysis of automation investments, identifying high-value test cases and optimizing test suite composition for maximum efficiency.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-  },
+    title: "ROI Analytics",
+    description: "Real-time dashboard tracking the dollar-value saved by automation versus manual cycles.",
+    icon: <BarChart3 className="w-6 h-6" />,
+    stats: "3.5x ROI Avg.",
+    color: "bg-amber-500",
+    size: "lg"
+  }
 ];
 
 export default function AIAutomation() {
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-mint-tint">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
-            AI & Automation Maturity
+        
+        {/* Header with AI Badge */}
+        <div className="max-w-3xl mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/5 border border-blue-600/10 mb-6">
+            <Bot className="w-4 h-4 text-blue-600" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-blue-700">Next-Gen QA Engine</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-8 leading-[0.9]">
+            AI & Automation <br />
+            <span className="text-slate-300">Maturity.</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-6">
-            Practical AI and automation capabilities that enhance testing efficiency and reliability
-          </p>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            We integrate AI and automation tools where they add real value, focusing on measurable improvements to test coverage, speed, and reliability.
+          <p className="text-xl text-slate-500 font-medium">
+            We don't just use AI tools; we build custom automation ecosystems that self-heal, scale, and deliver measurable ROI.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {capabilities.map((capability, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 hover:shadow-lg transition-shadow relative"
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
+          {capabilities.map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -5 }}
+              className={cn(
+                "group relative bg-white border border-slate-200 p-8 rounded-[2.5rem] flex flex-col justify-between transition-all hover:shadow-2xl hover:shadow-blue-500/5 hover:border-blue-500",
+                item.size === "lg" ? "md:col-span-3" : "md:col-span-2"
+              )}
             >
-              {/* Subtle glow behind icon */}
-              <div className="absolute top-6 left-6 w-16 h-16 bg-secondary/10 rounded-full blur-xl opacity-50"></div>
-              <div className="text-secondary mb-4 relative z-10">{capability.icon}</div>
-              <h3 className="text-xl font-heading font-semibold text-primary mb-3 relative z-10">
-                {capability.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed relative z-10">{capability.description}</p>
-            </div>
-          ))}
-        </div>
+              <div>
+                <div className="flex justify-between items-start mb-12">
+                  <div className={cn(
+                    "w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg",
+                    item.color
+                  )}>
+                    {item.icon}
+                  </div>
+                  <div className="text-[10px] font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-widest">
+                    {item.stats}
+                  </div>
+                </div>
 
-        <div className="mt-12 bg-white rounded-2xl border border-slate-200 p-8 md:p-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl font-heading font-semibold text-primary mb-4">
-              Engineering-Led Approach
-            </h3>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Our AI and automation capabilities are built on solid engineering principles. We evaluate tools and techniques based on their practical impact on testing quality and efficiency, not hype. Every capability we offer has been validated in real-world testing scenarios.
-            </p>
+                <h3 className="text-2xl font-black text-black mb-4 tracking-tight group-hover:text-blue-600 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-slate-500 text-sm font-medium leading-relaxed mb-8">
+                  {item.description}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-300 group-hover:text-blue-500 transition-colors">
+                <span>View Capability Docs</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Call to Action Bento Card */}
+          <div className="md:col-span-6 lg:col-span-6 bg-slate-900 rounded-[2.5rem] p-10 mt-6 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
+              <Cpu size={180} className="text-white" />
+            </div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="text-3xl font-black text-white mb-4 italic uppercase">Engineering-Led Approach</h3>
+                <p className="text-slate-400 font-medium max-w-2xl leading-relaxed">
+                  Every capability in our stack is validated against real-world enterprise environments. We focus on practical impact—improving coverage, speed, and reliability—not the hype.
+                </p>
+              </div>
+              <button className="px-10 py-5 bg-white text-black rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-blue-600 hover:text-white transition-all shadow-xl active:scale-95 whitespace-nowrap">
+                Review ROI Model
+              </button>
+            </div>
           </div>
         </div>
       </div>
