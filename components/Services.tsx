@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo,useState } from "react";
 
 const serviceCategories = [
   {
@@ -183,138 +183,503 @@ const serviceCategories = [
   },
 ];
 
+// export default function Services() {
+//   const [activeTab, setActiveTab] = useState("cooperation");
+//   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+//   const activeCategory = serviceCategories.find((cat) => cat.id === activeTab) || serviceCategories[0];
+
+//   // Get border color class for service cards
+//   const getBorderColor = (categoryId: string) => {
+//     const category = serviceCategories.find(cat => cat.id === categoryId);
+//     if (categoryId === "cooperation") return "border-t-accent";
+//     if (categoryId === "expertise") return "border-t-secondary";
+//     if (categoryId === "focus") return "border-t-indigo-400";
+//     if (categoryId === "coverage") return "border-t-primary";
+//     return "border-t-slate-200";
+//   };
+
+//   return (
+//     <section id="services" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-indigo-soft">
+//       <div className="max-w-7xl mx-auto">
+//         <div className="text-center mb-12 md:mb-16">
+//           <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
+//             Our Services
+//           </h2>
+//           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+//             Comprehensive QA solutions organized by how you need them
+//           </p>
+//         </div>
+
+//         {/* Desktop Tabs */}
+//         <div className="hidden md:block mb-10">
+//   <div className="flex flex-wrap gap-3 border-b border-slate-200">
+//     {serviceCategories.map((category) => {
+//       const isActive = activeTab === category.id;
+
+//       return (
+//         <button
+//           key={category.id}
+//           onClick={() => setActiveTab(category.id)}
+//           className={`relative flex items-center gap-2 px-6 py-3 font-medium text-sm transition-all
+//             ${
+//               isActive
+//                 ? "text-accent border-b-2 border-accent"
+//                 : "text-slate-600 hover:text-accent"
+//             }
+//           `}
+//         >
+//           {/* Icon */}
+//           <span
+//             className={`flex items-center justify-center ${
+//               isActive ? "text-accent" : "text-slate-500"
+//             }`}
+//           >
+//             {category.icon}
+//           </span>
+
+//           {/* Label */}
+//           <span className="whitespace-nowrap">
+//             {category.label}
+//           </span>
+//         </button>
+//       );
+//     })}
+//   </div>
+// </div>
+
+
+//         {/* Mobile Accordion */}
+//         <div className="md:hidden mb-8 space-y-2">
+//           {serviceCategories.map((category) => {
+//             const isOpen = openAccordion === category.id;
+//             return (
+//               <div key={category.id} className="bg-white rounded-lg border border-slate-200">
+//                 <button
+//                   onClick={() => setOpenAccordion(isOpen ? null : category.id)}
+//                   className="w-full flex items-center justify-between p-4 text-left"
+//                 >
+//                   <div className="flex items-center space-x-2">
+//                     <span className="text-accent">{category.icon}</span>
+//                     <span className="font-medium text-primary">{category.label}</span>
+//                   </div>
+//                   <svg
+//                     className={`w-5 h-5 text-slate-600 transition-transform ${isOpen ? "rotate-180" : ""}`}
+//                     fill="none"
+//                     stroke="currentColor"
+//                     viewBox="0 0 24 24"
+//                   >
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+//                   </svg>
+//                 </button>
+//                 {isOpen && (
+//                   <div className="px-4 pb-4 space-y-4">
+//                     {category.services.map((service, idx) => (
+//                       <div key={idx} className="pt-4 border-t border-slate-100">
+//                         <h4 className="font-semibold text-primary mb-2">{service.title}</h4>
+//                         <p className="text-sm text-slate-600 mb-2">{service.description}</p>
+//                         <div className="text-xs text-slate-500 space-y-1">
+//                           <p><span className="font-medium">Ideal for:</span> {service.idealFor}</p>
+//                           <p><span className="font-medium">Flexibility:</span> {service.flexibility}</p>
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </div>
+//                 )}
+//               </div>
+//             );
+//           })}
+//         </div>
+
+//         {/* Desktop Content Grid */}
+//         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+//           {activeCategory.services.map((service, index) => (
+//             <div
+//               key={index}
+//               className={`bg-white rounded-2xl border-t-2 ${getBorderColor(activeTab)} border-l border-r border-b border-slate-200 p-6 hover:shadow-lg hover:border-accent transition-all`}
+//             >
+//               <h3 className="text-xl font-heading font-semibold text-primary mb-3">
+//                 {service.title}
+//               </h3>
+//               <p className="text-slate-600 mb-4 leading-relaxed">{service.description}</p>
+//               <div className="space-y-2 text-sm">
+//                 <div>
+//                   <span className="font-semibold text-slate-700">Ideal for:</span>
+//                   <span className="text-slate-600 ml-2">{service.idealFor}</span>
+//                 </div>
+//                 <div>
+//                   <span className="font-semibold text-slate-700">Flexibility:</span>
+//                   <span className="text-slate-600 ml-2">{service.flexibility}</span>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+//============================================================================================
+
+// export default function Services() {
+//   const [activeTab, setActiveTab] = useState("cooperation");
+//   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+//   const activeCategory = useMemo(
+//     () => serviceCategories.find(cat => cat.id === activeTab) ?? serviceCategories[0],
+//     [activeTab]
+//   );
+
+//   const getBorderColor = (categoryId: string) => {
+//     switch (categoryId) {
+//       case "cooperation":
+//         return "border-t-accent";
+//       case "expertise":
+//         return "border-t-secondary";
+//       case "focus":
+//         return "border-t-indigo-400";
+//       case "coverage":
+//         return "border-t-primary";
+//       default:
+//         return "border-t-slate-200";
+//     }
+//   };
+
+//   return (
+//     <section id="services" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-indigo-soft">
+//       <div className="max-w-7xl mx-auto">
+
+//         {/* Header */}
+//         <div className="text-center mb-12 md:mb-16">
+//           <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
+//             Our Services
+//           </h2>
+//           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+//             Comprehensive QA solutions organized by how you need them
+//           </p>
+//         </div>
+
+//         {/* Desktop Tabs */}
+//         <div className="hidden md:block mb-10">
+//           <div
+//             className="flex flex-wrap gap-3 border-b border-slate-200"
+//             role="tablist"
+//           >
+//             {serviceCategories.map(category => {
+//               const isActive = activeTab === category.id;
+
+//               return (
+//                 <button
+//                   key={category.id}
+//                   role="tab"
+//                   aria-selected={isActive}
+//                   onClick={() => setActiveTab(category.id)}
+//                   className={`relative flex items-center gap-3 px-6 py-3 text-sm font-medium transition
+//                     ${isActive ? "text-accent" : "text-slate-600 hover:text-accent"}
+//                   `}
+//                 >
+//                   <span
+//                     className={`w-8 h-8 flex items-center justify-center rounded-md transition
+//                       ${isActive ? "bg-accent/10 text-accent" : "text-slate-500"}
+//                     `}
+//                   >
+//                     {category.icon}
+//                   </span>
+
+//                   <span className="whitespace-nowrap">
+//                     {category.label}
+//                   </span>
+
+//                   {isActive && (
+//                     <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent" />
+//                   )}
+//                 </button>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         {/* Mobile Accordion */}
+//         <div className="md:hidden mb-8 space-y-3">
+//           {serviceCategories.map(category => {
+//             const isOpen = openAccordion === category.id;
+
+//             return (
+//               <div key={category.id} className="bg-white rounded-lg border border-slate-200">
+//                 <button
+//                   onClick={() => setOpenAccordion(category.id)}
+//                   className="w-full flex items-center justify-between p-4 text-left"
+//                 >
+//                   <div className="flex items-center gap-2">
+//                     <span className="text-accent">{category.icon}</span>
+//                     <span className="font-medium text-primary">{category.label}</span>
+//                   </div>
+//                   <svg
+//                     className={`w-5 h-5 text-slate-600 transition-transform ${isOpen ? "rotate-180" : ""}`}
+//                     fill="none"
+//                     stroke="currentColor"
+//                     viewBox="0 0 24 24"
+//                   >
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+//                   </svg>
+//                 </button>
+
+//                 {isOpen && (
+//                   <div className="px-4 pb-4 space-y-4">
+//                     <p className="text-xs uppercase tracking-wide text-slate-400">
+//                       Services included
+//                     </p>
+
+//                     {category.services.map((service, idx) => (
+//                       <div key={idx} className="pt-4 border-t border-slate-100">
+//                         <h4 className="font-semibold text-primary mb-2">
+//                           {service.title}
+//                         </h4>
+//                         <p className="text-sm text-slate-600 mb-2">
+//                           {service.description}
+//                         </p>
+//                         <div className="text-xs text-slate-500 space-y-1">
+//                           <p><strong>Ideal for:</strong> {service.idealFor}</p>
+//                           <p><strong>Flexibility:</strong> {service.flexibility}</p>
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </div>
+//                 )}
+//               </div>
+//             );
+//           })}
+//         </div>
+
+//         {/* Desktop Grid */}
+//         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+//           {activeCategory.services.map((service, index) => (
+//             <div
+//               key={index}
+//               className={`group bg-white rounded-2xl border-t-2 ${getBorderColor(activeTab)}
+//                 border border-slate-200 p-6
+//                 transition-all duration-300
+//                 hover:-translate-y-1 hover:shadow-xl hover:border-accent`}
+//             >
+//               <h3 className="text-xl font-heading font-semibold text-primary mb-3 group-hover:text-accent transition">
+//                 {service.title}
+//               </h3>
+
+//               <p className="text-slate-600 mb-4 leading-relaxed">
+//                 {service.description}
+//               </p>
+
+//               <div className="space-y-2 text-sm text-slate-600 opacity-90 group-hover:opacity-100 transition">
+//                 <p><strong>Ideal for:</strong> {service.idealFor}</p>
+//                 <p><strong>Flexibility:</strong> {service.flexibility}</p>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Soft Trust CTA */}
+//         <div className="text-center mt-16">
+//           <p className="text-slate-600 mb-4">
+//             Not sure which QA model fits your product?
+//           </p>
+//           <button
+//             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
+//               bg-accent text-white font-medium
+//               hover:bg-accent/90 transition"
+//           >
+//             Get QA Recommendation
+//           </button>
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }
+
+//============================================================================================
+
+
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { ChevronDown, Sparkles, Target, ShieldCheck, Box } from "lucide-react";
+import { cn } from "../app/lib/utils";
+
 export default function Services() {
   const [activeTab, setActiveTab] = useState("cooperation");
-  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [openAccordion, setOpenAccordion] = useState<string | null>("cooperation");
 
-  const activeCategory = serviceCategories.find((cat) => cat.id === activeTab) || serviceCategories[0];
+  const activeCategory = useMemo(
+    () => serviceCategories.find((cat) => cat.id === activeTab) ?? serviceCategories[0],
+    [activeTab]
+  );
 
-  // Get border color class for service cards
   const getBorderColor = (categoryId: string) => {
-    const category = serviceCategories.find(cat => cat.id === categoryId);
-    if (categoryId === "cooperation") return "border-t-accent";
-    if (categoryId === "expertise") return "border-t-secondary";
-    if (categoryId === "focus") return "border-t-indigo-400";
-    if (categoryId === "coverage") return "border-t-primary";
-    return "border-t-slate-200";
+    const colors: Record<string, string> = {
+      cooperation: "border-t-accent shadow-accent/5",
+      expertise: "border-t-emerald-500 shadow-emerald-500/5",
+      focus: "border-t-indigo-500 shadow-indigo-500/5",
+      coverage: "border-t-primary shadow-primary/5",
+    };
+    return colors[categoryId] || "border-t-slate-200";
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-indigo-soft">
+    <section id="services" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
-            Our Services
+        
+        {/* Header Section */}
+        <div className="text-center mb-16 md:mb-24 relative">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-6"
+          >
+            <Sparkles size={14} />
+            Our Expertise
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
+            Quality Assurance <span className="text-accent italic">Tailored</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive QA solutions organized by how you need them
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            From agile startups to enterprise systems, we provide QA models that scale with your roadmap.
           </p>
         </div>
 
-        {/* Desktop Tabs */}
-        <div className="hidden md:block mb-10">
-  <div className="flex flex-wrap gap-3 border-b border-slate-200">
-    {serviceCategories.map((category) => {
-      const isActive = activeTab === category.id;
-
-      return (
-        <button
-          key={category.id}
-          onClick={() => setActiveTab(category.id)}
-          className={`relative flex items-center gap-2 px-6 py-3 font-medium text-sm transition-all
-            ${
-              isActive
-                ? "text-accent border-b-2 border-accent"
-                : "text-slate-600 hover:text-accent"
-            }
-          `}
-        >
-          {/* Icon */}
-          <span
-            className={`flex items-center justify-center ${
-              isActive ? "text-accent" : "text-slate-500"
-            }`}
-          >
-            {category.icon}
-          </span>
-
-          {/* Label */}
-          <span className="whitespace-nowrap">
-            {category.label}
-          </span>
-        </button>
-      );
-    })}
-  </div>
-</div>
-
-
-        {/* Mobile Accordion */}
-        <div className="md:hidden mb-8 space-y-2">
-          {serviceCategories.map((category) => {
-            const isOpen = openAccordion === category.id;
-            return (
-              <div key={category.id} className="bg-white rounded-lg border border-slate-200">
-                <button
-                  onClick={() => setOpenAccordion(isOpen ? null : category.id)}
-                  className="w-full flex items-center justify-between p-4 text-left"
-                >
-                  <div className="flex items-center space-x-2">
-                    <span className="text-accent">{category.icon}</span>
-                    <span className="font-medium text-primary">{category.label}</span>
-                  </div>
-                  <svg
-                    className={`w-5 h-5 text-slate-600 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+        {/* Desktop Tabs: Using LayoutGroup for smooth indicator sliding */}
+        <div className="hidden md:block mb-12">
+          <div className="flex justify-center p-1 bg-slate-200/50 backdrop-blur-sm rounded-2xl w-fit mx-auto border border-white">
+            <LayoutGroup id="tabs">
+              {serviceCategories.map((category) => {
+                const isActive = activeTab === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setActiveTab(category.id)}
+                    className={cn(
+                      "relative flex items-center gap-3 px-8 py-4 text-sm font-semibold transition-all rounded-xl",
+                      isActive ? "text-slate-900" : "text-slate-500 hover:text-slate-700"
+                    )}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {isOpen && (
-                  <div className="px-4 pb-4 space-y-4">
-                    {category.services.map((service, idx) => (
-                      <div key={idx} className="pt-4 border-t border-slate-100">
-                        <h4 className="font-semibold text-primary mb-2">{service.title}</h4>
-                        <p className="text-sm text-slate-600 mb-2">{service.description}</p>
-                        <div className="text-xs text-slate-500 space-y-1">
-                          <p><span className="font-medium">Ideal for:</span> {service.idealFor}</p>
-                          <p><span className="font-medium">Flexibility:</span> {service.flexibility}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                    <span className={cn("transition-colors", isActive ? "text-accent" : "text-slate-400")}>
+                      {category.icon}
+                    </span>
+                    {category.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-white shadow-sm rounded-xl -z-10"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </LayoutGroup>
+          </div>
         </div>
 
-        {/* Desktop Content Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeCategory.services.map((service, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-2xl border-t-2 ${getBorderColor(activeTab)} border-l border-r border-b border-slate-200 p-6 hover:shadow-lg hover:border-accent transition-all`}
-            >
-              <h3 className="text-xl font-heading font-semibold text-primary mb-3">
-                {service.title}
-              </h3>
-              <p className="text-slate-600 mb-4 leading-relaxed">{service.description}</p>
-              <div className="space-y-2 text-sm">
-                <div>
-                  <span className="font-semibold text-slate-700">Ideal for:</span>
-                  <span className="text-slate-600 ml-2">{service.idealFor}</span>
+        {/* Mobile Accordion: Improved Visual Separation */}
+        <div className="md:hidden mb-8 space-y-4">
+          {serviceCategories.map((category) => (
+            <div key={category.id} className="overflow-hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+              <button
+                onClick={() => setOpenAccordion(openAccordion === category.id ? null : category.id)}
+                className="w-full flex items-center justify-between p-5 text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-slate-50 rounded-lg text-accent">{category.icon}</div>
+                  <span className="font-bold text-slate-900">{category.label}</span>
                 </div>
-                <div>
-                  <span className="font-semibold text-slate-700">Flexibility:</span>
-                  <span className="text-slate-600 ml-2">{service.flexibility}</span>
-                </div>
-              </div>
+                <ChevronDown className={cn("w-5 h-5 text-slate-400 transition-transform duration-300", openAccordion === category.id && "rotate-180")} />
+              </button>
+              <AnimatePresence>
+                {openAccordion === category.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                  >
+                    <div className="px-5 pb-6 pt-2 space-y-6 border-t border-slate-50">
+                      {category.services.map((service, idx) => (
+                        <div key={idx} className="group">
+                          <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                            <Target className="w-4 h-4 text-accent" /> {service.title}
+                          </h4>
+                          <p className="text-sm text-slate-500 mb-3">{service.description}</p>
+                          <div className="bg-slate-50 p-3 rounded-xl text-[11px] space-y-1 border border-slate-100">
+                            <p><span className="text-slate-400 font-semibold uppercase">Ideal For:</span> {service.idealFor}</p>
+                            <p><span className="text-slate-400 font-semibold uppercase">Model:</span> {service.flexibility}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
+
+        {/* Desktop Grid: Animation when switching tabs */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {activeCategory.services.map((service, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "group relative bg-white rounded-3xl p-8 border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/20",
+                  getBorderColor(activeTab)
+                )}
+              >
+                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                   <Box size={60} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-accent transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-slate-500 mb-8 leading-relaxed text-sm">
+                  {service.description}
+                </p>
+                <div className="pt-6 border-t border-slate-100 space-y-3">
+                   <div className="flex items-start gap-2 text-xs">
+                      <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <p className="text-slate-600"><strong>Target:</strong> {service.idealFor}</p>
+                   </div>
+                   <div className="flex items-start gap-2 text-xs">
+                      <div className="w-4 h-4 bg-accent/20 rounded-full flex items-center justify-center shrink-0">
+                        <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                      </div>
+                      <p className="text-slate-600"><strong>Ops:</strong> {service.flexibility}</p>
+                   </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Improved CTA Section */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="relative mt-20 p-8 md:p-12 rounded-[2.5rem] bg-slate-900 overflow-hidden text-center"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#3b82f620,transparent)]" />
+          <h3 className="relative text-white text-2xl md:text-3xl font-bold mb-4">Ready to bullet proof  your release ?</h3>
+          <p className="relative text-slate-400 mb-8 max-w-lg mx-auto">Get a custom QA strategy tailored to your development lifecycle within 24 hours.</p>
+          <button className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-accent text-white font-bold hover:scale-105 transition-transform shadow-lg shadow-accent/30">
+            Get QA Recommendation
+            <ChevronDown className="-rotate-90 w-5 h-5" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );
