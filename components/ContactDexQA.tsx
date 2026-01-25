@@ -28,11 +28,13 @@ export default function ContactDexQA() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4 tracking-tight">
+
             Let's Talk Quality
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -49,7 +51,10 @@ export default function ContactDexQA() {
             {/* Phone Card */}
             <a
               href="tel:9842139997"
-              className="block bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-all group"
+              className="block bg-white rounded-2xl border border-slate-200 p-6
+transition-all duration-300 group
+hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-accent/20"
+
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -82,7 +87,10 @@ export default function ContactDexQA() {
             {/* Email Card */}
             <a
               href="mailto:dexqatechnology@gmail.com"
-              className="block bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-all group"
+              className="block bg-white rounded-2xl border border-slate-200 p-6
+transition-all duration-300 group
+hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-accent/20"
+
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -115,7 +123,8 @@ export default function ContactDexQA() {
             </a>
 
             {/* Trust Notes */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+            <div className="bg-gradient-to-br from-white to-slate-50 rounded-2xl border border-slate-200 p-6 space-y-4">
+
               <h3 className="text-lg font-heading font-semibold text-primary mb-4">
                 What to Expect
               </h3>
@@ -174,7 +183,9 @@ export default function ContactDexQA() {
 
           {/* Right Column - Contact Form */}
           <div>
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8
+shadow-lg ring-1 ring-slate-200/50">
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
@@ -190,7 +201,7 @@ export default function ContactDexQA() {
                     required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg  focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition-colors"
                     placeholder="John Doe"
                   />
                 </div>
@@ -208,7 +219,7 @@ export default function ContactDexQA() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition-colors"
                     placeholder="Your company name"
                   />
                 </div>
@@ -227,7 +238,7 @@ export default function ContactDexQA() {
                     required
                     value={formData.workEmail}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition-colors"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -253,7 +264,13 @@ export default function ContactDexQA() {
 
                 <button
                   type="submit"
-                  className="w-full bg-accent text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-colors font-medium text-lg shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                  className="w-full bg-accent text-white px-8 py-4 rounded-lg
+font-semibold text-lg
+transition-all duration-300
+hover:bg-accent/90 hover:-translate-y-0.5
+shadow-lg hover:shadow-2xl
+focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+
                 >
                   Talk to a QA Expert
                 </button>

@@ -244,7 +244,7 @@ export default function HowWeWork() {
           <div className="inline-flex items-center gap-6 p-2 pr-8 bg-slate-900 rounded-full text-white overflow-hidden">
             <div className="bg-blue-600 px-4 py-2 rounded-full font-black text-[10px] uppercase">Agile Sync</div>
             <p className="text-sm font-bold text-slate-300">
-              Integrated with <span className="text-blue-400">Jira</span>, <span className="text-blue-400">GitHub</span>, and <span className="text-blue-400">Azure DevOps</span>.
+              Integrated with <span className="text-blue-400">Jira</span>, <span className="text-blue-400">GitHub</span>, and <span className="text-blue-400">AWS DevOps</span>.
             </p>
           </div>
         </div>

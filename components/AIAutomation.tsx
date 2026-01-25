@@ -69,7 +69,7 @@ export default function AIAutomation() {
           </div>
           <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-8 leading-[0.9]">
             AI & Automation <br />
-            <span className="text-slate-300">Maturity.</span>
+            <span className="text-slate-600  font-black text-black tracking-tighter">Maturity.</span>   {/* text-slate-300  */}
           </h2>
           <p className="text-xl text-slate-500 font-medium">
             We don't just use AI tools; we build custom automation ecosystems that self-heal, scale, and deliver measurable ROI.
