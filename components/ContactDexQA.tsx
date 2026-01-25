@@ -53,7 +53,8 @@ export default function ContactDexQA() {
               href="tel:9842139997"
               className="block bg-white rounded-2xl border border-slate-200 p-6
 transition-all duration-300 group
-hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-accent/20"
+hover:-translate-y-1 hover:shadow-xl hover:bg-blue-50 hover:border-blue-200
+       hover:ring-1 hover:ring-blue-300/40"
 
             >
               <div className="flex items-start space-x-4">
@@ -89,7 +90,8 @@ hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-accent/20"
               href="mailto:dexqatechnology@gmail.com"
               className="block bg-white rounded-2xl border border-slate-200 p-6
 transition-all duration-300 group
-hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-accent/20"
+hover:-translate-y-1 hover:shadow-xl hover:bg-green-50 hover:border-green-200
+       hover:ring-1 hover:ring-green-300/40"
 
             >
               <div className="flex items-start space-x-4">
