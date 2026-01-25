@@ -117,9 +117,9 @@ export default function AIAutomation() {
 
           {/* Call to Action Bento Card */}
           <div className="md:col-span-6 lg:col-span-6 bg-slate-900 rounded-[2.5rem] p-10 mt-6 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
+            {/* <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
               <Cpu size={180} className="text-white" />
-            </div>
+            </div> */}
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="text-center md:text-left">
