@@ -265,12 +265,11 @@ shadow-lg ring-1 ring-slate-200/50">
                 <button
                   type="submit"
                   className="w-full bg-accent text-white px-8 py-4 rounded-lg
-font-semibold text-lg
-transition-all duration-300
-hover:bg-accent/90 hover:-translate-y-0.5
-shadow-lg hover:shadow-2xl
-focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-
+                      font-semibold text-lg
+                      transition-all duration-300
+                      hover:bg-accent/90 hover:-translate-y-0.5
+                      shadow-lg hover:shadow-2xl
+                      focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
                   Talk to a QA Expert
                 </button>
