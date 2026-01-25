@@ -241,7 +241,7 @@ export default function IndustriesAndSystems() {
   const activeSystem = systems.find(s => s.id === activeSystemId)!;
 
   return (
-    <div className="w-full bg-[#0B0F1A] overflow-x-hidden">
+    <div className="w-full bg-[#272e40] overflow-x-hidden">     {/* [#0B0F1A] */}
       {/* SECTION 1: SYSTEMS BLUEPRINT */}
       <section className="py-24 border-b border-white/5 relative">
         {/* Fixed Dynamic Glow: Using style prop for hex transparency */}

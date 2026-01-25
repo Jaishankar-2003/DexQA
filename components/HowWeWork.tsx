@@ -215,7 +215,7 @@ export default function HowWeWork() {
                     )}>
                       {step.icon}
                     </div>
-                    <span className="text-4xl font-black text-slate-100 transition-colors group-hover:text-slate-200">
+                    <span className="text-4xl font-black text-slate-300 transition-colors group-hover:text-slate-600">
                       {step.step}
                     </span>
                   </div>

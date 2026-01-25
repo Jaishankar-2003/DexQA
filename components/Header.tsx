@@ -140,9 +140,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../app/lib/utils";
 
 const NAV_LINKS = [
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Industries", href: "#industries" },
-  { label: "Tools", href: "#tools" },
+  { label: "Tools", href: "#toolCategories" },
   { label: "Packages", href: "#packages" },
 ];
 

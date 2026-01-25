@@ -534,15 +534,15 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 text-[11px] font-semibold tracking-wider rounded-full bg-accent/10 text-accent  uppercase  mb-6"
           >
             <Sparkles size={14} />
             Our Expertise
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
-            Quality Assurance <span className="text-accent italic">Tailored</span>
+            Quality Assurance <span className="text-accent italic  ">Tailored</span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-[21px] text-slate-500 max-w-2xl mx-auto leading-relaxed">
             From agile startups to enterprise systems, we provide QA models that scale with your roadmap.
           </p>
         </div>
@@ -558,18 +558,21 @@ export default function Services() {
                     key={category.id}
                     onClick={() => setActiveTab(category.id)}
                     className={cn(
-                      "relative flex items-center gap-3 px-8 py-4 text-sm font-semibold transition-all rounded-xl",
+                      "relative flex items-center gap-3 px-7 py-3.5 text-sm font-medium transition-all rounded-xl",
                       isActive ? "text-slate-900" : "text-slate-500 hover:text-slate-700"
                     )}
                   >
-                    <span className={cn("transition-colors", isActive ? "text-accent" : "text-slate-400")}>
-                      {category.icon}
+                    <span className={cn(
+                            "transition-colors text-sm",
+                            isActive ? "text-accent" : "text-slate-400"
+                          )}>
+                    {category.icon}
                     </span>
                     {category.label}
                     {isActive && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 bg-white shadow-sm rounded-xl -z-10"
+                        className="absolute inset-0 bg-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-xl -z-10"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
@@ -636,25 +639,25 @@ export default function Services() {
               <div
                 key={index}
                 className={cn(
-                  "group relative bg-white rounded-3xl p-8 border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/20",
+                  "group relative bg-white rounded-3xl p-9 border border-slate-200 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/20",
                   getBorderColor(activeTab)
                 )}
               >
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                    <Box size={60} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-accent transition-colors">
+                <h3 className="text-[22px] font-semibold text-slate-900 mb-3 group-hover:text-accent transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-slate-500 mb-8 leading-relaxed text-sm">
+                <p className="text-slate-600 mb-8 leading-relaxed text-[15px]">
                   {service.description}
                 </p>
                 <div className="pt-6 border-t border-slate-100 space-y-3">
-                   <div className="flex items-start gap-2 text-xs">
+                   <div className="flex items-start gap-2 text-[13px]">
                       <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
                       <p className="text-slate-600"><strong>Target:</strong> {service.idealFor}</p>
                    </div>
-                   <div className="flex items-start gap-2 text-xs">
+                   <div className="flex items-start gap-2 text-[13px]">
                       <div className="w-4 h-4 bg-accent/20 rounded-full flex items-center justify-center shrink-0">
                         <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                       </div>

@@ -174,7 +174,7 @@ const toolCategories = [
 
 export default function FrameworksTools() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative overflow-hidden">
+    <section id="toolCategories" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header Section */}
