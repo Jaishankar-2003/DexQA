@@ -10,14 +10,48 @@ export default function ContactCTA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // Handle form submission here
+  //   console.log("Form submitted:", formData);
+  //   // Reset form
+  //   setFormData({ name: "", email: "", company: "", message: "" });
+  //   alert("Thank you for your inquiry. We'll be in touch soon!");
+  // };
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", company: "", message: "" });
-    alert("Thank you for your inquiry. We'll be in touch soon!");
+  
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          workEmail: formData.email,
+          company: formData.company,
+          message: formData.message,
+          source: "CTA Form", // optional (nice for identifying)
+        }),
+      });
+  
+      if (!res.ok) throw new Error("Failed");
+  
+      alert("Thank you for your inquiry. We'll be in touch soon!");
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    }
   };
+  
+
+
+
+
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

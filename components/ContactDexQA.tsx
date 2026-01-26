@@ -10,13 +10,39 @@ export default function ContactDexQA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // Frontend-only: log and show confirmation
+  //   console.log("Contact form submitted:", formData);
+  //   setFormData({ fullName: "", company: "", workEmail: "", message: "" });
+  //   alert("Thank you for reaching out! We'll respond within 24 hours.");
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Frontend-only: log and show confirmation
-    console.log("Contact form submitted:", formData);
-    setFormData({ fullName: "", company: "", workEmail: "", message: "" });
-    alert("Thank you for reaching out! We'll respond within 24 hours.");
+  
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!res.ok) throw new Error("Failed");
+  
+      alert("Thank you for reaching out! We'll respond within 24 hours.");
+      setFormData({ fullName: "", company: "", workEmail: "", message: "" });
+    } catch (err) {
+      alert("Something went wrong. Please try again.");
+    }
   };
+  
+
+
+
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
