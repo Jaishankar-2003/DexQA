@@ -54,7 +54,7 @@ export default function ContactDexQA() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+    <section id = "contact" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}

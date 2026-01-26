@@ -145,6 +145,7 @@ const NAV_LINKS = [
   { label: "Industries", href: "#industries" },
   { label: "Tools", href: "#toolCategories" },
   { label: "Packages", href: "#packages" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
