@@ -142,6 +142,7 @@ import { cn } from "../app/lib/utils";
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "IT Support", href: "https://jspcs.vercel.app/", external: true },
   { label: "Industries", href: "#industries" },
   { label: "Tools", href: "#toolCategories" },
   { label: "Packages", href: "#packages" },
@@ -183,7 +184,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((item) => (
+            {/* {NAV_LINKS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -191,7 +192,25 @@ export default function Header() {
               >
                 {item.label}
               </Link>
+            ))} */}
+
+            {NAV_LINKS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                target={item.external ? "_blank" : "_self"}
+                rel={item.external ? "noopener noreferrer" : ""}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium rounded-full transition-all",
+                  item.label === "IT Support"
+                    ? "text-indigo-600 hover:text-white hover:bg-indigo-600"
+                    : "text-slate-600 hover:text-primary hover:bg-slate-100"
+                )}
+              >
+                {item.label}
+              </Link>
             ))}
+
             
             <div className="ml-4 pl-4 border-l border-slate-200">
               <Link
