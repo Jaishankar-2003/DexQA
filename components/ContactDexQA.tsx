@@ -105,7 +105,7 @@ hover:-translate-y-1 hover:shadow-xl hover:bg-blue-50 hover:border-blue-200
                   <h3 className="text-lg font-heading font-semibold text-primary mb-1">
                     Phone
                   </h3>
-                  <p className="text-xl font-medium text-accent">9842139997</p>
+                  {/* <p className="text-xl font-medium text-accent">9842139997</p> */}
                   <p className="text-sm text-slate-500 mt-1">Click to call</p>
                 </div>
               </div>
